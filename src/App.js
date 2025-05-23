@@ -86,7 +86,7 @@ function App() {
 
 export default function WrappedApp() {
   return (
-    <TonConnectUIProvider manifestUrl="http://localhost:3000/tonconnect-manifest.json">
+    <TonConnectUIProvider manifestUrl="https://predipie-test.vercel.app/tonconnect-manifest.json">
       <App />
     </TonConnectUIProvider>
   );
