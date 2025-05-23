@@ -19,12 +19,19 @@ function App() {
     setTxHash('');
 
     try {
+      const nanoTON = Math.floor(parseFloat(amount) * 1e9);
+      if (!recipient || !nanoTON || isNaN(nanoTON)) {
+        setError('Recipient or amount is invalid.');
+        setLoading(false);
+        return;
+      }
+
       const transaction = {
         validUntil: Date.now() + 5 * 60 * 1000,
         messages: [
           {
             address: recipient,
-            amount: (parseFloat(amount) * 1e9).toString(),
+            amount: nanoTON.toString(),
           },
         ],
       };
@@ -32,11 +39,12 @@ function App() {
       const result = await tonConnectUI.sendTransaction(transaction);
       setTxHash(result.boc);
     } catch (err) {
-      setError('Error on send transaction:' + err.message);
+      setError('Error on send transaction: ' + err.message);
     } finally {
       setLoading(false);
     }
   };
+
 
   return (
     <Container className='p-4'>
