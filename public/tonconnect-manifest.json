@@ -1,13 +1,5 @@
 {
-  "manifest_version": "1",
-  "name": "Predipie Test Project",
-  "description": "Predepie test task for hiring!",
   "url": "https://predipie-test.vercel.app",
-  "icons": [
-    {
-      "src": "https://predipie-test.vercel.app/icon.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    }
-  ]
+  "name": "Predipie Test Project",
+  "iconUrl": "https://predipie-test.vercel.app/icon.png"
 }
