@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { TonConnectUIProvider, useTonConnectUI, useTonAddress } from '@tonconnect/ui-react';
 import { TonConnectButton } from '@tonconnect/ui-react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { Button, Card, Container, Form, Row } from 'react-bootstrap';
 
 function App() {
   const [tonConnectUI] = useTonConnectUI();
@@ -37,50 +39,63 @@ function App() {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
-      <h1>Predepie Test Task:</h1>
+    <Container className='p-4'>
+      <Row className='text-center'>
+        <Card>
+          <Card.Header>
+            <h1>Predepie Test Task:</h1>
+          </Card.Header>
 
-      <TonConnectButton />
+          <Card.Body style={{ textAlign: '-webkit-center' }}>
 
-      <p>You wallet address: {userAddress || 'Wallet not connected.'}</p>
+            <TonConnectButton className='mb-2' />
 
-      <div style={{ marginBottom: '10px' }}>
-        <input
-          type="text"
-          placeholder="Recipient address"
-          value={recipient}
-          onChange={(e) => setRecipient(e.target.value)}
-          style={{ width: '300px' }}
-        />
-      </div>
+            <p>You wallet address: {userAddress || 'Wallet not connected.'}</p>
 
-      <div style={{ marginBottom: '10px' }}>
-        <input
-          type="number"
-          placeholder="Amount (TON)"
-          value={amount}
-          onChange={(e) => setAmount(e.target.value)}
-          style={{ width: '300px' }}
-        />
-      </div>
+            <Form>
 
-      <button onClick={sendTransaction} disabled={loading}>
-        {loading ? 'Sending...' : 'Send'}
-      </button>
+              <Form.Group className='mb-3'>
+                <Form.Control
+                  type="text"
+                  placeholder="Recipient address"
+                  value={recipient}
+                  onChange={(e) => setRecipient(e.target.value)}
+                />
+              </Form.Group>
 
-      {txHash && (
-        <div style={{ marginTop: '10px' }}>
-          <p>Transaction sent successfully.</p>
-          <p>BOC: {txHash}</p>
-        </div>
-      )}
+              <Form.Group className='mb-3'>
+                <Form.Control
+                  type="number"
+                  placeholder="Amount (TON)"
+                  value={amount}
+                  onChange={(e) => setAmount(e.target.value)}
+                />
+              </Form.Group>
 
-      {error && (
-        <div style={{ marginTop: '10px', color: 'red' }}>
-          <p>{error}</p>
-        </div>
-      )}
-    </div>
+              <Button className='btn btn-success' onClick={sendTransaction} disabled={loading}>
+                {loading ? 'Sending...' : 'Send'}
+              </Button>
+            </Form>
+          </Card.Body>
+
+          {(txHash || error) &&
+            <Card.Footer className='p-4'>
+              {txHash && (
+                <div className='my-2'>
+                  <p className='text-success'>Transaction sent successfully.</p>
+                  <p className='text-info'>BOC: {txHash}</p>
+                </div>
+              )}
+
+              {error && (
+                <div className='my-2'>
+                  <p className='text-danger'>{error}</p>
+                </div>
+              )}
+            </Card.Footer>}
+        </Card>
+      </Row>
+    </Container>
   );
 }
 
