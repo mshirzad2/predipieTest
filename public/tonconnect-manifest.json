@@ -2,6 +2,6 @@
   "manifest_version": "1",
   "name": "Predipie Test Project",
   "description": "Predepie test task for hiring!",
-  "url": "http://localhost:3000",
-  "iconUrl": "http://localhost:3000/icon.png"
+  "url": "https://predipie-test.vercel.app",
+  "iconUrl": "https://predipie-test.vercel.app/icon.png"
 }
