@@ -3,5 +3,11 @@
   "name": "Predipie Test Project",
   "description": "Predepie test task for hiring!",
   "url": "https://predipie-test.vercel.app",
-  "iconUrl": "https://predipie-test.vercel.app/icon.png"
+  "icons": [
+    {
+      "src": "https://predipie-test.vercel.app/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
 }
